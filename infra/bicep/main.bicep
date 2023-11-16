@@ -11,7 +11,7 @@ param azureAIServiceName string = 'azai-${applicationSuffix}'
 param storageAccountName string = 'sa${applicationSuffix}'
 
 @description('The name given to the blob container')
-param containerName string = 'hotels-container'
+param containerName string = 'cog-search-demo'
 
 @description('The location for all resources. Default is the location of the resource group.')
 param location string = resourceGroup().location
@@ -97,5 +97,5 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
 }
 
 resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@2023-01-01' = {
-  name: '${storageAccount.name}/${containerName}'
+  name: '${storageAccount.name}/default/${containerName}'
 }
